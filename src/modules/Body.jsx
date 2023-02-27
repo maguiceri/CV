@@ -129,7 +129,7 @@ const Body = () => {
             </AccordionSummaryCV>
             <AccordionDetailsCV>
             <h3 className={classes.title}>Santander Tecnologia (actualmente trabajando)</h3>
-            <p>Me encuentro en el area de front end relacionado a la seccion de beneficios que brinda el banco.</p>
+            <p>Me encuentro en el área de front end de todo lo relacionado a los beneficios que brinda el banco. Realice tanto proyectos desde cero como de refactor.</p>
             <h3 className={classes.title}>Latventure (2019-2020)</h3>
             <p>
                   Secretaria, desarrollo tareas de organización, manejo bancos,
