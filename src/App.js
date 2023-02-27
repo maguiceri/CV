@@ -1,10 +1,13 @@
 import './App.css';
-import NavBar from './modules/navBar/navBar';
+import Header from './modules/Header';
+import Body from './modules/Body';
+
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#a5547d", height: "100vh"}}>
-      <NavBar />
+    <div style={{ backgroundColor: "#a5547d", minHeight: "100vh"}}>
+      <Header />
+      <Body />
     </div>
   );
 }
