@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/material/styles';
-import profile from "../assets/img/profile.png"
-import { StayCurrentLandscape } from '@mui/icons-material';
-
+import About from './About/About';
+import Proyect1 from './Proyects/Proyect1';
 
 const useStyles = makeStyles(() => ({
   containerAccordion: {
@@ -120,76 +118,11 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Body = () => {
-  const [hovered, setHovered] = useState(true);
   const classes = useStyles();
   return (
     <>
-      <div className={classes.containerAccordion}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className={classes.presentation}><span className={classes.number}>0.1</span> About Me <div className={classes.line}></div></div>
-          <div style={{ color: "white", fontFamily: 'PT Serif', fontSize: 18, opacity: 0.5, marginBottom: 100, width: "80%" }} >
-            Frontend Developer with enthusiasm for professional development. I am passionate about programming, which makes my learning and adaptation abilities very quick.
-            <br></br>
-            <br></br>
-            I enjoy staying constantly informed about the technologies used today.
-            <br></br>
-            <br></br>
-            I have completed many projects that you can find at:
-            <a href="https://github.com/maguiceri?tab=repositories" style={{ color: "#68ddbd", textDecoration: "none", fontWeight: "bold" }}> gitHub.</a>
-          </div>
-        </div>
-        <div className={classes.containerProfile}
-          onMouseEnter={() => setHovered(false)}
-          onMouseLeave={() => setHovered(true)}
-        >
-
-          <img src={profile} alt="img" className={classes.img}></img>
-          <div className={classes.borderProfile}></div>
-          {hovered && <div className={classes.colorImg}></div>}
-        </div>
-
-      </div>
-      <div className={classes.containerComp}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className={classes.presentation}><span className={classes.number}>0.2</span> Skills <div className={classes.line}></div></div>
-          <div style={{ display: "flex", }}>
-            <div style={{ marginRight: 100 }}>
-              <div className={classes.phill}>HTML</div>
-              <div className={classes.phill}>HTML5</div>
-              <div className={classes.phill}>JavaScript</div>
-              <div className={classes.phill}>React</div>
-            </div>
-            <div style={{ marginRight: 100 }}>
-              <div className={classes.phill}>CSS</div>
-              <div className={classes.phill}>Styled-Component</div>
-              <div className={classes.phill}>SASS</div>
-              <div className={classes.phill}>Testing</div>
-            </div>
-            <div >
-              <div className={classes.phill}>TypeScript</div>
-              <div className={classes.phill}>Redux</div>
-              <div className={classes.phill}>Sagas</div>
-              <div className={classes.phill}>Node</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div className={classes.containerComp}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className={classes.presentation}><span className={classes.number}>0.2</span> Skills <div className={classes.line}></div></div>
-          <ul style={{ listStyleType: "none"}}> 
-            <li style={{ marginBottom: 30}}><a className={classes.navLink} href="#home">Home</a></li>
-            <li style={{ marginBottom: 30}}><a className={classes.navLink} href="#news">News</a></li>
-            <li style={{ marginBottom: 30}}><a className={classes.navLink} href="#contact">Contact</a></li>
-            <li style={{ marginBottom: 30}}><a className={classes.navLink} href="#about">About</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-
+      <About/>
+      <Proyect1/>
       {/*          <div style={{ color:"white", fontFamily: 'PT Serif', fontSize: 18, opacity: 0.5, marginBottom: 100}}>
           <h3 className={classes.title}>Courseit</h3>
           <p>

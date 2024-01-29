@@ -1,9 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles';
-import profile from "../assets/img/profile.png"
-import qr from "../assets/img/qr.jpg"
-
-
 
 const useStyles = makeStyles(() => ({
   head: {
@@ -12,7 +8,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#081130",
     display: "flex",
     flexDirection: "column",
-    height: "100vh", 
+    height: "100vh",
     [`@media (max-width:${600}px)`]: {
       display: "flex",
       flexDirection: "column"
@@ -21,7 +17,7 @@ const useStyles = makeStyles(() => ({
   information: {
     display: "flex",
     flexDirection: "column",
-    marginLeft: "15%", 
+    marginLeft: "15%",
     marginTop: "10%",
     fontSize: 20,
     [`@media (max-width:${600}px)`]: {
@@ -95,6 +91,9 @@ const useStyles = makeStyles(() => ({
   },
   phill: {
     paddingRight: 20,
+    textDecoration: "none",
+    color: "white",
+
   },
   number: {
     color: "#68ddbd",
@@ -121,10 +120,10 @@ const Header = () => {
   return (
     <div className={classes.head}>
       <div className={classes.nav}>
-        <div className={classes.phill}><span className={classes.number}>0.1</span>About</div>
-        <div className={classes.phill}><span className={classes.number}>0.2</span>Competencies</div>
-        <div className={classes.phill}><span className={classes.number}>0.3</span>Experience Academic</div>
-        <div className={classes.phill}><span className={classes.number}>0.4</span>Expetience</div>
+        <a href="#about" className={classes.phill}><span className={classes.number}>0.1</span>About</a>
+        <a href="#proyects" className={classes.phill}><span className={classes.number}>0.2</span>Proyects</a>
+        <a href="#experience" className={classes.phill}><span className={classes.number}>0.3</span>Experience Academic</a>
+        <a href="#experience" className={classes.phill}><span className={classes.number}>0.4</span>Expetience</a>
       </div>
       <div className={classes.icons}>
         <a href="https://github.com/maguiceri" class="icon">
@@ -135,17 +134,10 @@ const Header = () => {
         </a>
         <div className={classes.line} ></div>
       </div>
-      {/* <img src={profile} alt="img" className={classes.img}></img> */}
       <div className={classes.information}>
-
         <span className={classes.hello}>Hi, my name is</span>
         <span className={classes.name}>Magalí Aldana Cerisola</span>
         <p className={classes.aboutme}> Frontend Developer </p>
-
-        {/*         <div style={{ display: "flex", flexDirection: "column", paddingBottom: 10, opacity: 0.6 }}>
-          <span>Phone: <a style={{ color: "white", textDecoration: "none" }} href="tel:+4591158057874">1558057874</a></span>
-          <span>Mail:<a style={{ color: "white", textDecoration: "none" }} href="mailto:magui.cerisola@gmail.com"> magui.cerisola@gmail.com</a></span>
-        </div> */}
       </div>
 
       <div>
