@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
+import Proyects from './Proyects/Proyects';
+import Experience from './Experience/Experience';
 import About from './About/About';
-import Proyect1 from './Proyects/Proyect1';
 
 const useStyles = makeStyles(() => ({
   containerAccordion: {
@@ -122,48 +123,8 @@ const Body = () => {
   return (
     <>
       <About/>
-      <Proyect1/>
-      {/*          <div style={{ color:"white", fontFamily: 'PT Serif', fontSize: 18, opacity: 0.5, marginBottom: 100}}>
-          <h3 className={classes.title}>Courseit</h3>
-          <p>
-            "Desarrollo Frontend", en este curso pude poner en
-            funcionamiento todos mis concomientos en programación,
-            enfrentandome a realizar proyectos grandes con herramientas
-            utilizadas en el mercado laboral actual.
-          </p>
-          <h3 className={classes.title}>Centro de Investigación Cinematográfico (2020)</h3>
-          <p>
-            "Actuación y Dirección de Artes Escenicas", el año cursado en
-            esta carrera me ayudo a mejorar mi exposicion y a encontrar otro
-            mundo que me apasiona.
-          </p>
-          <h3 className={classes.title}>Universidad Nacional de San Martín (2019)</h3>
-          <p>
-            "Tecnicatura en Programación Informática", en aquellos años
-            comenzaron mis primeros pasos en la programación, ansiaba la
-            materia en la que pudiera codear y cuando finalmente llegó y
-            realicé mi primer codigo, supe que quiero dedicarme a programar.
-          </p>
-        </div>
-        <h3 className={classes.title}>Santander Tecnologia (actualmente trabajando)</h3>
-        <p>Me encuentro en el área de front end de todo lo relacionado a los beneficios que brinda el banco. Realice tanto proyectos desde cero como de refactor.</p>
-        <h3 className={classes.title}>Latventure (2019-2020)</h3>
-        <p>
-          Secretaria, desarrollo tareas de organización, manejo bancos,
-          facturas, excel y Outlook.
-        </p>
-        <h3 className={classes.title}>Day Care Center (2016-2019)</h3>
-        <p>
-          Encargada de Guarderia, comencé como empleada para asistir a
-          la anterior encargada, y luego cuando ésta dejo él puesto, me
-          ascendieron a su cargo, teniendo como responsabilidades la
-          coordinación de tareas de las demás empleadas de la guarderia,
-          manejo de tareas y turnos con los padres, cobranzas y
-          especialmente, el cuidado de los niños de la guarderia interna
-          de una oficina.
-        </p>
-
-      </div>  */}
+      <Proyects/>
+      <Experience/>
     </>
   );
 };

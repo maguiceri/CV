@@ -4,13 +4,25 @@ import profile from "../../assets/img/profile.png"
 
 
 const useStyles = makeStyles(() => ({
+
     containerAccordion: {
-        display: "flex",
-        color: "white",
+        color: "rgb(255, 255, 255, 0.5)",
         fontFamily: 'PT Serif',
         height: "100vh",
-        marginLeft: "15%",
+        display: "flex",
+        justifyContent: "center"
+    },
+    contentContainer: {
+        display: "flex",
+        justifyContent: "center",
         alignItems: "center"
+    },
+    descriptionProfile: {
+        fontFamily: 'PT Serif',
+        fontSize: 18,
+        color: "rgb(255, 255, 255, 0.5)",
+        width: 550,
+        marginRight: 15,
     },
     presentation: {
         fontWeight: 700,
@@ -18,6 +30,7 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         alignItems: "center",
         marginBottom: 40,
+        color: "white"
     },
     number: {
         color: "#68ddbd",
@@ -31,80 +44,49 @@ const useStyles = makeStyles(() => ({
         marginLeft: 20,
         opacity: 0.5
     },
-    colorImg: {
-        width: 300,
-        height: 300,
-        zIndex: 1,
-        borderRadius: 10,
-        position: "absolute",
-        marginTop: 0,
-        marginLeft: 0,
-        left: "0%",
-        backgroundColor: "#68ddbd",
-        opacity: 0.3
-    },
     containerProfile: {
         position: "relative",
-        height: "100vh",
-        top: "30%"
-
-    },
-    borderProfile: {
-        position: "absolute",
-        border: "3px solid #68ddbd",
-        borderRadius: 10,
         width: 300,
         height: 300,
-        top: "2%",
-        left: "3%",
-        transition: "width 0.3s, height 0.3s",
-        '&:hover': {
-
-        },
     },
     img: {
+        right: "2%",
+        top: "-1%",
         width: 300,
         height: 300,
         zIndex: 1,
         borderRadius: 10,
         position: "absolute",
-
-        backgroundColor: "#68ddbd",
-        transition: "margin-top 0.3s, margin-left 0.3s",
+        transition: "top 0.3s, right 0.3s",
         '&:hover': {
-            marginTop: -5,
-            marginLeft: -5,
+            right: "3%",
+            top: "-2%",
         },
         [`@media (max-width:${600}px)`]: {
             display: "none"
         }
     },
-
-    phill: {
-        backgroundColor: "rgba(104, 221, 189, 0.3)",
-        color: "#68ddbd",
-        borderRadius: 20,
-        textAlign: "center",
-        marginBottom: 20,
-        padding: 10
-
+    borderProfile: {
+        right: "0%",
+        position: "absolute",
+        border: "3px solid #68ddbd",
+        borderRadius: 10,
+        width: 300,
+        height: 300,
+        transition: "width 0.3s, height 0.3s",
     },
-    navLink: {
-        textDecoration: "none",
-        color: "white",
-        fontFamily: 'PT Serif',
-
-
-    },
-
-    competencies: {
-        display: "flex",
-        justifyContent: "center",
-        padding: 40,
-        borderRadius: 20,
-        '&:hover': {
-            backgroundColor: "#14213d"
-        },
+    colorImg: {
+        right: "2%",
+        top: "-1%",
+        width: 300,
+        height: 300,
+        zIndex: 2,
+        borderRadius: 10,
+        position: "absolute",
+        marginTop: 0,
+        marginLeft: 0,
+        backgroundColor: "#68ddbd",
+        opacity: 0.3,
     },
 }))
 
@@ -114,9 +96,9 @@ const About = () => {
     return (
         <>
             <div className={classes.containerAccordion} id="about">
-                <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
-                    <div className={classes.presentation}><span className={classes.number}>0.1</span> About Me <div className={classes.line}></div></div>
-                    <div style={{ color: "white", fontFamily: 'PT Serif', fontSize: 18, opacity: 0.5, marginRight: 20 }} >
+                <div className={classes.contentContainer}>
+                    <div className={classes.descriptionProfile} >
+                        <div className={classes.presentation}><span className={classes.number}>0.1</span> About Me <div className={classes.line}></div></div>
                         Frontend Developer with enthusiasm for professional development. I am passionate about programming, which makes my learning and adaptation abilities very quick.
                         <br></br>
                         <br></br>
@@ -126,20 +108,20 @@ const About = () => {
                         I have completed many projects that you can find at:
                         <a href="https://github.com/maguiceri?tab=repositories" style={{ color: "#68ddbd", textDecoration: "none", fontWeight: "bold" }}> gitHub.</a>
                     </div>
-                </div>
 
-                <div className={classes.containerProfile}
-                    onMouseEnter={() => setHovered(false)}
-                    onMouseLeave={() => setHovered(true)}
-                >
-                    <div>
+                    <div className={classes.containerProfile}
+                        onMouseEnter={() => setHovered(false)}
+                        onMouseLeave={() => setHovered(true)}
 
-                        <img src={profile} alt="img" className={classes.img}></img>
+                    >
+                        <img
+
+                            src={profile} alt="img" className={classes.img}></img>
                         <div className={classes.borderProfile}></div>
-                        {hovered && <div className={classes.colorImg}></div>}
+                        {<div className={classes.colorImg} style={{ visibility: hovered ? "visible" : "hidden" }} ></div>}
+
                     </div>
                 </div>
-
             </div>
         </>
     );
