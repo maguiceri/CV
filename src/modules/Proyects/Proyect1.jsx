@@ -13,7 +13,12 @@ const useStyles = makeStyles(() => ({
   contentFlex: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    width: "90%",
+    [`@media (max-width:${800}px)`]: {
+      display:"flex",
+      flexDirection: "column",
+    }
   },
   presentation: {
     fontWeight: 700,
@@ -57,8 +62,11 @@ const useStyles = makeStyles(() => ({
       marginTop: -5,
       marginLeft: -5,
     },
-    [`@media (max-width:${600}px)`]: {
-      display: "none"
+    [`@media (max-width:${800}px)`]: {
+      '&:hover': {
+        marginTop: 0,
+      marginLeft: 0,
+      },
     }
   },
 
@@ -79,10 +87,11 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    width: 350
-
+    width: 350,
+    [`@media (max-width:${800}px)`]: {
+      position: "absolute"
+    }
   },
-
   descriptionProyect: {
     color: "rgb(255, 255, 255, 0.7)",
     backgroundColor: "#0C2E58",

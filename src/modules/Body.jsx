@@ -119,13 +119,13 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Body = () => {
-  const classes = useStyles();
+
   return (
-    <>
-      <About/>
+    <div>
+      <About />
       <Proyects/>
       <Experience/>
-    </>
+    </div>
   );
 };
 

@@ -15,7 +15,12 @@ const useStyles = makeStyles(() => ({
     contentContainer: {
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        width: "90%",
+        [`@media (max-width:${800}px)`]: {
+            display:"flex",
+            flexDirection: "column",
+          }
     },
     descriptionProfile: {
         fontFamily: 'PT Serif',
@@ -48,11 +53,14 @@ const useStyles = makeStyles(() => ({
         position: "relative",
         width: 300,
         height: 300,
+        [`@media (max-width:${800}px)`]: {
+            marginTop: 20
+          }
     },
     img: {
         right: "2%",
         top: "-1%",
-        width: 300,
+        width: 250,
         height: 300,
         zIndex: 1,
         borderRadius: 10,
@@ -62,23 +70,20 @@ const useStyles = makeStyles(() => ({
             right: "3%",
             top: "-2%",
         },
-        [`@media (max-width:${600}px)`]: {
-            display: "none"
-        }
     },
     borderProfile: {
         right: "0%",
         position: "absolute",
         border: "3px solid #68ddbd",
         borderRadius: 10,
-        width: 300,
+        width: 250,
         height: 300,
         transition: "width 0.3s, height 0.3s",
     },
     colorImg: {
         right: "2%",
         top: "-1%",
-        width: 300,
+        width: 250,
         height: 300,
         zIndex: 2,
         borderRadius: 10,
@@ -114,7 +119,7 @@ const About = () => {
                         onMouseLeave={() => setHovered(true)}
 
                     >
-                        <img
+                        <img 
 
                             src={profile} alt="img" className={classes.img}></img>
                         <div className={classes.borderProfile}></div>

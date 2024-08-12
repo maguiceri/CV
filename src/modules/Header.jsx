@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@mui/styles';
+import clsx from 'clsx';
+
 
 const useStyles = makeStyles(() => ({
   head: {
@@ -46,7 +48,10 @@ const useStyles = makeStyles(() => ({
     bottom: "0%",
     left: "5%",
     position: "fixed",
-    zIndex: 99999
+    zIndex: 9,
+    [`@media (max-width:${1020}px)`]: {
+      display:"none",
+    }
   },
   iconsEmail: {
     display: "flex",
@@ -56,16 +61,38 @@ const useStyles = makeStyles(() => ({
     bottom: "0%",
     right: "5%",
     position: "fixed",
-    zIndex: 99999
+    zIndex: 9,
+    '&:hover': {
+      color: "#68ddbd",
+    },
+    [`@media (max-width:${1020}px)`]: {
+      display:"none",
+    }
   },
   nav: {
     fontSize: 14,
-    paddingRight: "5%",
-    paddingTop: 50,
+    position: "fixed",
+    justifyContent: "end",
+    zIndex: 99999999,
     display: "flex",
-    justifyContent: "flex-end",
-    flexDirection: "space-araound",
+    backdropFilter: "blur(10px)",
+    width: "100%",
+    height: "60px", 
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    backgroundColor: "rgba(10, 25, 47, 0.85)",
+    boxShadow: "0 10px 30px -10px var(--navy-shadow)",
+    [`@media (max-width:${800}px)`]: {
+      display: "none"
+    }
   },
+  navHidden: {
+    transform: "translateY(-100%)", 
+    boxShadow: "none",
+  },
+  navVisible: {
+    transform: "translateY(0)",
+  },
+
   imgQR: {
     width: 200,
     height: 200,
@@ -87,17 +114,58 @@ const useStyles = makeStyles(() => ({
     opacity: 0.5
   },
   icon: {
-    backgroundColor: "red"
+    fontSize: 300
+  },
+  iconMenu: {
+    fontSize:40, 
+    color: "#68ddbd", 
+    paddingTop: 20, 
+    display:"none", 
+    justifyContent:"flex-end",
+    position: "fixed",
+    zIndex: 99999999,
+    width: "100%",
+    backdropFilter: "blur(10px)",
+    [`@media (max-width:${800}px)`]: {
+      display:"flex"
+    }
+  },
+  containerBarMenu: {
+    postion:"fixed", 
+    zIndex:"99", 
+    backgroundColor: "#0C2E58", 
+    width: 400, 
+    height: "100vh", 
+    position:"fixed", 
+    right: 0, 
+    display: "flex", 
+    justifyContent:"center", 
+    flexDirection:"column",
+  },
+  barMenu: {
+    display: "flex", 
+    flexDirection:"column", 
+    textAlign:"center",
+    justifyContent:"center",
   },
   phill: {
     paddingRight: 20,
     textDecoration: "none",
     color: "white",
+    flexDirection:"column", 
+    padding:"20px 0px",
+    '&:hover': {
+      color: "#68ddbd",
+    },
 
   },
   number: {
     color: "#68ddbd",
     marginRight: 4,
+  },
+  
+  hidden: {
+    display:"none",
   },
   navItem: {
     display: "flex",
@@ -115,16 +183,74 @@ const useStyles = makeStyles(() => ({
 }))
 
 
-const Header = () => {
+const Header = ({setSelectedNav,selectedNav}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCrossRotated, setIsCrossRotated] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true); 
+  const [lastScrollTop, setLastScrollTop] = useState(0); 
   const classes = useStyles();
+
+
+
+  const handleNavMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setSelectedNav(!selectedNav);
+    setIsCrossRotated(!isCrossRotated);
+  };
+
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      // Desplazamiento hacia abajo
+      setIsNavVisible(false);
+    } else if (scrollTop < lastScrollTop) {
+      // Desplazamiento hacia arriba
+      setIsNavVisible(true);
+    }
+    setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.containerBarMenu') && !event.target.closest('.fa-bars')) {
+        setIsMenuOpen(false);
+        setSelectedNav(false);
+        setIsCrossRotated(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen, setSelectedNav]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
     <div className={classes.head}>
-      <div className={classes.nav}>
+      <div className={clsx(classes.nav, !isNavVisible && classes.navHidden, isNavVisible && classes.navVisible)}>
         <a href="#about" className={classes.phill}><span className={classes.number}>0.1</span>About</a>
         <a href="#proyects" className={classes.phill}><span className={classes.number}>0.2</span>Proyects</a>
         <a href="#experience" className={classes.phill}><span className={classes.number}>0.3</span>Experience Academic</a>
         <a href="#experience" className={classes.phill}><span className={classes.number}>0.4</span>Expetience</a>
       </div>
+      <div className={classes.iconMenu} onClick={handleNavMenu}><i style={{paddingRight:10}} class="fa fa-bars" aria-hidden="true"></i></div>
+      <div className={clsx(classes.containerBarMenu, !isMenuOpen && classes.hidden)}>
+      <div onClick={handleNavMenu} style={{ color: "#68ddbd", position:"absolute", top: 20, right: 20 }}><i class="fa fa-times" style={{fontSize : 30 }} aria-hidden="true"></i></div>
+        <div className={classes.barMenu}>
+          <a href="#about" className={classes.phill} ><span className={classes.number} style={{marginBottom:"5px"}}>0.1</span>About</a>
+          <a href="#proyects" className={classes.phill}><span className={classes.number} style={{marginBottom:"5px"}}>0.2</span>Proyects</a>
+          <a href="#experience" className={classes.phill}><span className={classes.number} style={{marginBottom:"5px"}}>0.3</span>Experience Academic</a>
+          <a href="#experience" className={classes.phill}><span className={classes.number} style={{marginBottom:"5px"}}>0.4</span>Expetience</a>
+        </div>
+      </div> 
       <div className={classes.icons}>
         <a href="https://github.com/maguiceri" class="icon">
           <i style={{ color: "white", fontSize: 25, paddingBottom: 10, opacity: 0.5 }} class="fa fa-github" aria-hidden="true"></i>

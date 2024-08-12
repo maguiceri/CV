@@ -14,7 +14,8 @@ const useStyles = makeStyles(() => ({
   contentFlex: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    width: "90%"
   },
   containerImg: {
     position: "relative",
@@ -33,8 +34,11 @@ const useStyles = makeStyles(() => ({
       marginTop: -5,
       marginLeft: -5,
     },
-    [`@media (max-width:${600}px)`]: {
-      display: "none"
+    [`@media (max-width:${800}px)`]: {
+      '&:hover': {
+        marginTop: 0,
+      marginLeft: 0,
+      },
     }
   },
   colorImg: {
@@ -53,7 +57,10 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    width: 350
+    width: 350,
+    [`@media (max-width:${800}px)`]: {
+      position: "absolute"
+    }
 
   },
   featureProyect: {

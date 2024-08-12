@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import proyectSC from "../../assets/img/proyectSC.png"
-
 
 const useStyles = makeStyles(() => ({
     containerAccordion: {
@@ -11,7 +9,8 @@ const useStyles = makeStyles(() => ({
         fontFamily: 'PT Serif',
         height: "100vh",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems:"center",
+        width:"90%"
     },
     presentation: {
         fontWeight: 700,
@@ -30,19 +29,19 @@ const useStyles = makeStyles(() => ({
         height: 1,
         backgroundColor: "#68ddbd",
         marginLeft: 20,
-        opacity: 0.5
+        opacity: 0.5,
     },
     containerPresentation: {
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     contentContainerNav: {
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
     },
     containerNav: {
         fontFamily: 'PT Serif',
-        width: 200
+        width: 200,
     },
     listNav: {
         listStyleType: "none",
@@ -55,28 +54,35 @@ const useStyles = makeStyles(() => ({
     },
     containerExperience: {
         position: "relative",
-        width: "30%",
-        justifyContent:"center",
-        alignItems:"center"
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+      
+        height: 300, 
     },
     cardExperience: {
-        position: "absolute",
+        position: 'absolute',
+        top: 0,
+        left: 0,
         width: 300,
         height: 300,
-        visibility: "hidden"
-
+        opacity: 0,
+        transition: 'opacity 0.3s ease-in-out',
+    },
+    visible: {
+        opacity: 1,
     },
     titleExperience: {
-        fontSize: 20
+        fontSize: 20,
     },
     timeExperience: {
-        opacity: 0.5
+        opacity: 0.5,
     },
     descriptionExperience: {
-        opacity: 0.5
+        opacity: 0.5,
     },
-
-}))
+}));
 
 const Experience = () => {
     const classes = useStyles();
@@ -88,28 +94,58 @@ const Experience = () => {
 
     return (
         <>
-
             <div className={classes.containerAccordion} id="experience">
-                <div className={classes.presentation}><span className={classes.number}>0.3</span> Experience <div className={classes.line}></div></div>
-                <div className={classes.containerPresentation} >
+                <div className={classes.presentation}>
+                    <span className={classes.number}>0.3</span> Experience
+                    <div className={classes.line}></div>
+                </div>
+                <div className={classes.containerPresentation}>
                     <div className={classes.contentContainerNav}>
                         <ul className={classes.containerNav}>
-                            <li style={{ borderLeft: selectedSection == "santander" && "3px solid #68ddbd" }} className={classes.listNav} onClick={() => handleNavClick('santander')}><a style={{ color: selectedSection == "santander" && "#68ddbd" }} className={classes.linkNav} onClick={() => handleNavClick('santander')}>Santander Tecnology Argentina</a></li>
-                            <li style={{ borderLeft: selectedSection == "latventure" && "3px solid #68ddbd" }} className={classes.listNav} onClick={() => handleNavClick('latventure')}><a style={{ color: selectedSection == "latventure" && "#68ddbd" }} className={classes.linkNav}>Latventure</a></li>
+                            <li
+                                style={{ borderLeft: selectedSection === "santander" && "3px solid #68ddbd" }}
+                                className={classes.listNav}
+                                onClick={() => handleNavClick('santander')}
+                            >
+                                <a
+                                    style={{ color: selectedSection === "santander" && "#68ddbd" }}
+                                    className={classes.linkNav}
+                                >
+                                    Santander Technology Argentina
+                                </a>
+                            </li>
+                            <li
+                                style={{ borderLeft: selectedSection === "latventure" && "3px solid #68ddbd" }}
+                                className={classes.listNav}
+                                onClick={() => handleNavClick('latventure')}
+                            >
+                                <a
+                                    style={{ color: selectedSection === "latventure" && "#68ddbd" }}
+                                    className={classes.linkNav}
+                                >
+                                    Latventure
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
                     <div className={classes.containerExperience}>
-                        <div style={{ visibility: selectedSection == "santander" && "visible" }} className={classes.cardExperience}>
+                        <div
+                            className={`${classes.cardExperience} ${selectedSection === "santander" ? classes.visible : ''}`}
+                        >
                             <h3 className={classes.titleExperience}>Front End Developer</h3>
                             <p className={classes.timeExperience}>Currently working.</p>
-                            <p className={classes.descriptionExperience}>I am in the front-end area, focusing on everything related to the benefits provided by the bank. I have worked on both projects from scratch and refactoring projects.</p>
+                            <p className={classes.descriptionExperience}>
+                                I am in the front-end area, focusing on everything related to the benefits provided by the bank. I have worked on both projects from scratch and refactoring projects.
+                            </p>
                         </div>
-                        <div style={{ visibility: selectedSection == "latventure" && "visible" }} className={classes.cardExperience}>
+                        <div
+                            className={`${classes.cardExperience} ${selectedSection === "latventure" ? classes.visible : ''}`}
+                        >
                             <h3 className={classes.titleExperience}>Latventure</h3>
                             <p className={classes.timeExperience}>2019-2020</p>
                             <p className={classes.descriptionExperience}>
-                                Secretary, I perform organizational tasks, handle banking matters, invoices, Excel, and Outlook
+                                Secretary, I perform organizational tasks, handle banking matters, invoices, Excel, and Outlook.
                             </p>
                         </div>
                     </div>
@@ -119,4 +155,4 @@ const Experience = () => {
     );
 };
 
-export default Experience; 
+export default Experience;
