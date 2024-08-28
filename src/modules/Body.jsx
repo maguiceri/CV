@@ -115,7 +115,7 @@ const useStyles = makeStyles(() => ({
     '&:hover': {
       backgroundColor: "#14213d"
     },
-  },
+  }
 }))
 
 const Body = () => {
